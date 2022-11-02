@@ -1,0 +1,59 @@
+@import '~@/styles/variables.scss';
+@import '~@/styles/mixins.scss';
+.login__wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  ::v-deep .van-cell-group--inset {
+    margin: 0 .55rem;
+    border-radius: 0;
+    border-bottom: .01rem solid rgba(174,188,212,0.3);
+  }
+  ::v-deep .van-cell {
+    padding: .14rem 0 .15rem;
+    &__title {
+      margin-right: .2rem;
+      width: .28rem;
+      font-size: .14rem;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: $main-text-color;
+    }
+    &::after {
+      left: 0;
+      right: 0;
+      border-bottom: .01rem solid rgba(174,188,212,0.3);
+      transform: none;
+    }
+  }
+  &__title {
+    margin: 0 auto .57rem;
+    font-size: .18rem;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    text-align: center;
+    color: $main-text-color;
+  }
+  &__btn {
+    @include flex-center;
+    margin: .3rem auto 0;
+    width: 2.66rem;
+    height: .38rem;
+    font-size: .16rem;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    background: linear-gradient(90deg, #4685FF 0%, #1D57FF 100%);
+    border-radius: .04rem;
+    color: $light-text-color;
+  }
+  &__forget {
+    margin: .3rem auto 0;
+    font-size: .14rem;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    text-align: center;
+    color: $theme-color;
+  }
+}
