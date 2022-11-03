@@ -2,10 +2,11 @@ import axios from 'axios'
 import store from '@/store'
 import { Notify } from 'vant'
 import { getToken } from '@/utils/sessionStorage'
+import { getEnvValue } from '@/utils/environment'
 
 // create an axios instance
 const request = axios.create({
-  baseURL: '',
+  baseURL: getEnvValue('VUE_APP_BASE_API'),
   timeout: 1000
 })
 
