@@ -56,4 +56,25 @@ vue-h5-template
   npm run serve
 ```
 
+### 环境变量
+`package.json` 里的 `scripts` 配置 `serve` `stage` `build`，通过 `--mode xxx` 来执行不同环境
+
+- 通过`npm run build`执行`vue-cli-service build`
+- 通过`npm run build:test`打包测试，执行`vue-cli-service build --mode test`
+- 通过`npm run build:stage`打包预发布，执行`vue-cli-service build --mode stage`
+- 通过`npm run build:prod`打包发布，执行`vue-cli-service build --mode production`
+
+```
+  ...
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build:test": "vue-cli-service build --mode test",
+    "build:stage": "vue-cli-service build --mode stage",
+    "build:prod": "vue-cli-service build --mode production",
+    "lint": "vue-cli-service lint"
+  },
+  ...
+```
+
 
