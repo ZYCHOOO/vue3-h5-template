@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '@/store'
 import { Notify } from 'vant'
-import { getToken } from '@/utils/sessionStorage'
+import { getToken } from '@/utils/storage'
 import { getEnvValue } from '@/utils/environment'
 
 // create an axios instance

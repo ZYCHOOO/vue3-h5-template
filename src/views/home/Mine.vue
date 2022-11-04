@@ -12,7 +12,7 @@
 
 <script>
 import { useRouter } from 'vue-router'
-import { removeToken } from '@/utils/sessionStorage'
+import { removeToken } from '@/utils/storage'
 
 export default {
   name: 'Mine',

@@ -1,4 +1,4 @@
-import { setToken, getToken } from '@/utils/sessionStorage'
+import { setToken, getToken } from '@/utils/storage'
 
 export default {
   namespaced: true,
