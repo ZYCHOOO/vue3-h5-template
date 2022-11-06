@@ -5,8 +5,12 @@
 </template>
 
 <script>
+import { getEnvValue } from '@/utils/environment'
 export default {
-  name: 'Index'
+  name: 'Index',
+  setup () {
+    console.log(getEnvValue('NODE_ENV'))
+  }
 }
 </script>
 
