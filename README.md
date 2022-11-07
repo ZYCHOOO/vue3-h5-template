@@ -56,7 +56,11 @@ vue-h5-template
   npm run serve
 ```
 
-### 环境变量配置
+## <span id="catalogue">目录</span>
+* [环境变量配置](#env)
+
+
+### <span id="env">环境变量配置</span>
 `package.json` 里的 `scripts` 配置 `serve` `stage` `build`，通过 `--mode xxx` 来执行不同环境
 
 - 通过`npm run test`执行`vue-cli-service serve --mode test`
@@ -96,5 +100,7 @@ setup () {
 
 - 关于getEnvVariables方法
 在environment.js文件中集中管理了环境变量，这样的好处是可以一目了然各个环境下的变量，而且改动后可以立即生效，不用重新运行项目才获取到
+
+[返回顶部](#catalogue)
 
 
