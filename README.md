@@ -60,6 +60,8 @@ vue-h5-template
 * [环境变量配置](#env)
 * [eruda移动端调试](#eruda)
 * [去除console.log](#console)
+* [rem适配](#rem)
+* [全局sass样式](#sass)
 * [BEM命名规范](#bem)
 * [样式穿透](#deep)
 
@@ -74,7 +76,6 @@ vue-h5-template
 - 通过`npm run build:prod`打包发布，执行`vue-cli-service build --mode production`
 
 ```javascript
-  ...
   "scripts": {
     "serve": "vue-cli-service serve",
     "test": "vue-cli-service serve --mode test",
@@ -84,7 +85,6 @@ vue-h5-template
     "build:prod": "vue-cli-service build --mode production",
     "lint": "vue-cli-service lint"
   },
-  ...
 ```
 
 #### 环境变量
@@ -105,7 +105,7 @@ setup () {
 - 关于getEnvVariables方法
 在environment.js文件中集中管理了环境变量，这样的好处是可以一目了然各个环境下的变量，而且改动后可以立即生效，不用重新运行项目才获取到
 
-[返回顶部](#catalogue)
+[🔙返回顶部](#catalogue)
 
 
 ### <span id="eruda">eruda移动端调试</span>
@@ -117,7 +117,7 @@ setup () {
 ```
 若要在其他自定义环境中显示eruda调试工具，在`enums.js`的`DEBUG_WHITE_LIST`白名单中修改配置即可
 
-[返回顶部](#catalogue)
+[🔙返回顶部](#catalogue)
 
 
 ### <span id="console">去除console.log</span>
@@ -140,7 +140,89 @@ setup () {
   }
 ```
 
-[返回顶部](#catalogue)
+[🔙返回顶部](#catalogue)
+
+
+### <span id="rem">rem适配</span>
+
+[🔙返回顶部](#catalogue)
+
+
+### <span id="scss">scss全局样式</span>
+vue的思想就是组件化，在每个`.vue`页面的样式要想独立开来，可以添加scoped属性，使当前样式只能在当前vue文件中生效，使各个组件的样式互不污染。
+```css
+  <style lang="scss">
+    /** global style */
+  </style>
+  <style lang="scss" scoped>
+    /** local style */
+  </style>
+```
+
+#### 目录结构
+vue3-h5-template所有全局样式都在`@/styles`目录下设置
+
+```
+│  ├─ styles ---------------- 项目样式
+│     ├─ components	--------- 组件样式
+│     ├─ views -------------- 页面样式      
+│     ├─ base.scss ---------- html样式
+│     ├─ iconfont.css	------- 字体图标CSS
+│     ├─ index.css ---------- 全局通用样式
+│     ├─ mixins.css	--------- 全局mixins样式
+│     └─ variables.css ------ css变量
+```
+
+`vue.config.js`添加全局样式配置
+```javascript
+  css: {
+    loaderOptions: {
+      // provide global variables
+      sass: {
+        prependData: `
+          @import "~@/style/mixins.scss";
+          @import "~@/style/variables.scss";
+        `
+      }
+    }
+  },
+```
+
+#### 全局mixins样式
+在`mixins.scss`中写好了常用的样式，如flex布局的上下左右居中，超出宽度省略等
+```css
+  @mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @mixin flex-align-center {
+    display: flex;
+    align-items: center;
+  }
+
+  @mixin flex-justify-center {
+    display: flex;
+    justify-content: center;
+  }
+
+  @mixin ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @mixin multiline-ellipsis($lineNum) {
+    display: -webkit-box;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $lineNum;
+    -webkit-box-orient: vertical;
+  }
+```
+
+[🔙返回顶部](#catalogue)
 
 
 ### <span id="bem">BEM命名规范</span>
@@ -152,7 +234,7 @@ setup () {
   <div class="header-btn-success" />
 ```
 
-[返回顶部](#catalogue)
+[🔙返回顶部](#catalogue)
 
 
 ### <span id="deep">样式穿透</span>
@@ -163,5 +245,5 @@ setup () {
   }
 ```
 
-[返回顶部](#catalogue)
+[🔙返回顶部](#catalogue)
 
