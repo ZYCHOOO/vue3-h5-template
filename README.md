@@ -46,7 +46,7 @@ vue-h5-template
 ```
 
 ### 项目启动
-```
+```bash
   git clone git@github.com:ZYCHOOO/vue3-h5-template.git
 
   cd vue-h5-template
@@ -59,6 +59,7 @@ vue-h5-template
 ## <span id="catalogue">目录</span>
 * [环境变量配置](#env)
 * [eruda移动端调试](#eruda)
+* [去除console.log](#console)
 * [BEM命名规范](#bem)
 * [样式穿透](#deep)
 
@@ -72,7 +73,7 @@ vue-h5-template
 - 通过`npm run build:stage`打包预发布，执行`vue-cli-service build --mode stage`
 - 通过`npm run build:prod`打包发布，执行`vue-cli-service build --mode production`
 
-```
+```javascript
   ...
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -91,7 +92,7 @@ vue-h5-template
 2. 在`environment.js`文件中，
 
 - 获取变量名的两种方式
-```
+```javascript
 import { getEnvVariables, getEnvValue } from '@/utils/environment'
 
 setup () {
@@ -107,7 +108,6 @@ setup () {
 [返回顶部](#catalogue)
 
 
-
 ### <span id="eruda">eruda移动端调试</span>
 在开发环境和测试环境中显示eruda调试工具
 ```
@@ -119,9 +119,33 @@ setup () {
 
 [返回顶部](#catalogue)
 
+
+### <span id="console">去除console.log</span>
+```bash
+  npm i -D babel-plugin-transform-remove-console
+```
+在开发环境和测试环境中保留console.log输出，`babel.config.js`中配置如下
+```javascript
+  const plugins = []
+  const DEBUG_WHITE_LIST = ['development', 'test']
+  const IS_DEBUG = DEBUG_WHITE_LIST.includes(process.env.VUE_APP_ENV)
+
+  // 非调试环境，去除代码中的所有console.log(development-env, test-env)
+  if (!IS_DEBUG) {
+    plugins.push('transform-remove-console')
+  }
+
+  module.exports = {
+    plugins
+  }
+```
+
+[返回顶部](#catalogue)
+
+
 ### <span id="bem">BEM命名规范</span>
 该项目使用BEM命名方法，由块（Block）元素（Element）修饰符（Modifier）组成，具有可读性且方便维护。
-```
+```css
   <!-- good -->
   <div class="header__btn--success" />
   <!-- bad -->
@@ -133,7 +157,7 @@ setup () {
 
 ### <span id="deep">样式穿透</span>
 当你子组件使用了 `scoped` 但在父组件又想修改子组件的样式可以 通过 `:deep` 来实现
-```
+```css
   :deep .btn {
     background: lightskyblue;
   }
