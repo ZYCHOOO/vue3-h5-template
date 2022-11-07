@@ -56,7 +56,7 @@ vue-h5-template
   npm run serve
 ```
 
-### 环境变量
+### 环境变量配置
 `package.json` 里的 `scripts` 配置 `serve` `stage` `build`，通过 `--mode xxx` 来执行不同环境
 
 - 通过`npm run build`执行`vue-cli-service build`
@@ -75,6 +75,20 @@ vue-h5-template
     "lint": "vue-cli-service lint"
   },
   ...
+```
+
+### 环境变量
+1. 在`.env.xxx`文件中，变量命名必须要以`VUE_APP_`开头
+2. 在`environment.js`文件中，
+
+- 获取变量名的两种方式
+```
+import { getEnvVariables, getEnvValue } from '@/utils/environment'
+
+setup () {
+  console.log(getEnv)
+}
+
 ```
 
 
