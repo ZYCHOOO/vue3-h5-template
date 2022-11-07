@@ -31,6 +31,20 @@
   justify-content: center;
 }
 
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin multiline-ellipsis($lineNum) {
+  display: -webkit-box;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lineNum;
+  -webkit-box-orient: vertical;
+}
+
 @mixin wrapper {
   position: absolute;
   left: 0;
