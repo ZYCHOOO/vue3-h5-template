@@ -58,6 +58,9 @@ vue-h5-template
 
 ## <span id="catalogue">目录</span>
 * [环境变量配置](#env)
+* [eruda移动端调试](#eruda)
+* [BEM命名规范](#bem)
+* [样式穿透](#deep)
 
 
 ### <span id="env">环境变量配置</span>
@@ -103,4 +106,38 @@ setup () {
 
 [返回顶部](#catalogue)
 
+
+
+### <span id="eruda">eruda移动端调试</span>
+在开发环境和测试环境中显示eruda调试工具
+```
+  npm install eruda
+
+  eruda.init()
+```
+若要在其他自定义环境中显示eruda调试工具，在`enums.js`的`DEBUG_WHITE_LIST`白名单中修改配置即可
+
+[返回顶部](#catalogue)
+
+### <span id="bem">BEM命名规范</span>
+该项目使用BEM命名方法，由块（Block）元素（Element）修饰符（Modifier）组成，具有可读性且方便维护。
+```
+  <!-- good -->
+  <div class="header__btn--success" />
+  <!-- bad -->
+  <div class="header-btn-success" />
+```
+
+[返回顶部](#catalogue)
+
+
+### <span id="deep">样式穿透</span>
+当你子组件使用了 `scoped` 但在父组件又想修改子组件的样式可以 通过 `:deep` 来实现
+```
+  :deep .btn {
+    background: lightskyblue;
+  }
+```
+
+[返回顶部](#catalogue)
 
