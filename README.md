@@ -73,7 +73,7 @@ vue-h5-template
 * [axios 封装及接口拦截](#axios)
 
 
-### <span id="env">环境变量配置</span>
+### <span id="env">⚙️ 环境变量配置</span>
 
 `package.json` 里的 `scripts` 配置 `serve` `stage` `build`，通过 `--mode xxx` 来执行不同环境
 
@@ -112,12 +112,12 @@ setup () {
 ```
 
 - 关于getEnvVariables方法
-在environment.js文件中集中管理了环境变量，这样的好处是可以一目了然各个环境下的变量，而且改动后可以立即生效，不用重新运行项目才获取到
+在`environment.js`文件中集中管理了环境变量，这样的好处是可以一目了然各个环境下的变量，而且改动后可以立即生效，不用重新运行项目才获取到
 
 [🔙返回顶部](#catalogue)
 
 
-### <span id="eruda">eruda移动端调试</span>
+### <span id="eruda">⚙️ eruda移动端调试</span>
 
 在开发环境和测试环境中显示eruda调试工具
 
@@ -132,7 +132,7 @@ setup () {
 [🔙返回顶部](#catalogue)
 
 
-### <span id="console">去除console.log</span>
+### <span id="console">⚙️ 去除console.log</span>
 
 ```bash
   npm i -D babel-plugin-transform-remove-console
@@ -158,12 +158,12 @@ setup () {
 [🔙返回顶部](#catalogue)
 
 
-### <span id="rem">rem适配</span>
+### <span id="rem">⚙️ rem适配</span>
 
 [🔙返回顶部](#catalogue)
 
 
-### <span id="scss">scss全局样式</span>
+### <span id="scss">⚙️ scss全局样式</span>
 
 vue的思想就是组件化，在每个`.vue`页面的样式要想独立开来，可以添加scoped属性，使当前样式只能在当前vue文件中生效，使各个组件的样式互不污染。
 
@@ -246,7 +246,7 @@ vue3-h5-template所有全局样式都在`@/styles`目录下设置
 [🔙返回顶部](#catalogue)
 
 
-### <span id="bem">BEM命名规范</span>
+### <span id="bem">⚙️ BEM命名规范</span>
 
 该项目使用BEM命名方法，由块（Block）元素（Element）修饰符（Modifier）组成，具有可读性且方便维护。
 
@@ -260,7 +260,7 @@ vue3-h5-template所有全局样式都在`@/styles`目录下设置
 [🔙返回顶部](#catalogue)
 
 
-### <span id="deep">样式穿透</span>
+### <span id="deep">⚙️ 样式穿透</span>
 
 当你子组件使用了 `scoped` 但在父组件又想修改子组件的样式可以 通过 `:deep` 来实现
 
@@ -273,7 +273,7 @@ vue3-h5-template所有全局样式都在`@/styles`目录下设置
 [🔙返回顶部](#catalogue)
 
 
-### <span id="phonex">适配苹果底部安全距离</span>
+### <span id="phonex">⚙️ 适配苹果底部安全距离</span>
 
 在`index.html`的meta中添加`viewport-fit=cover`
 
@@ -312,17 +312,17 @@ Vant 中部分组件提供了 safe-area-inset-top 或 safe-area-inset-bottom 属
 [🔙返回顶部](#catalogue)
 
 
-### <span id="proxy">proxy 跨域配置</span>
+### <span id="proxy">⚙️ proxy 跨域配置</span>
 
 [🔙返回顶部](#catalogue)
 
 
-### <span id="mock">使用 mock 数据</span>
+### <span id="mock">⚙️ 使用 mock 数据</span>
 
 [🔙返回顶部](#catalogue)
 
 
-### <span id="axios">axios 封装及接口拦截</span>
+### <span id="axios">⚙️ axios 封装及接口拦截</span>
 
 [🔙返回顶部](#catalogue)
 
