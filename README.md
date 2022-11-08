@@ -5,6 +5,7 @@
 * 项目地址：[github](https://github.com/ZYCHOOO/vue3-h5-template)
 
 ### 项目结构
+
 ```
 vue-h5-template
 ├─ public --------------- 静态资源
@@ -46,6 +47,7 @@ vue-h5-template
 ```
 
 ### 项目启动
+
 ```bash
   git clone git@github.com:ZYCHOOO/vue3-h5-template.git
 
@@ -57,16 +59,22 @@ vue-h5-template
 ```
 
 ## <span id="catalogue">目录</span>
+
 * [环境变量配置](#env)
-* [eruda移动端调试](#eruda)
-* [去除console.log](#console)
-* [rem适配](#rem)
-* [全局sass样式](#sass)
-* [BEM命名规范](#bem)
+* [eruda 移动端调试](#eruda)
+* [去除 console.log](#console)
+* [rem 适配](#rem)
+* [全局 sass 样式](#sass)
+* [BEM 命名规范](#bem)
 * [样式穿透](#deep)
+* [适配苹果底部安全距离](#phonex)
+* [proxy 跨域配置](#proxy)
+* [使用 mock 数据](#mock)
+* [axios 封装及接口拦截](#axios)
 
 
 ### <span id="env">环境变量配置</span>
+
 `package.json` 里的 `scripts` 配置 `serve` `stage` `build`，通过 `--mode xxx` 来执行不同环境
 
 - 通过`npm run test`执行`vue-cli-service serve --mode test`
@@ -88,6 +96,7 @@ vue-h5-template
 ```
 
 #### 环境变量
+
 1. 在`.env.xxx`文件中，变量命名必须要以`VUE_APP_`开头
 2. 在`environment.js`文件中，
 
@@ -109,22 +118,28 @@ setup () {
 
 
 ### <span id="eruda">eruda移动端调试</span>
+
 在开发环境和测试环境中显示eruda调试工具
+
 ```
   npm install eruda
 
   eruda.init()
 ```
+
 若要在其他自定义环境中显示eruda调试工具，在`enums.js`的`DEBUG_WHITE_LIST`白名单中修改配置即可
 
 [🔙返回顶部](#catalogue)
 
 
 ### <span id="console">去除console.log</span>
+
 ```bash
   npm i -D babel-plugin-transform-remove-console
 ```
+
 在开发环境和测试环境中保留console.log输出，`babel.config.js`中配置如下
+
 ```javascript
   const plugins = []
   const DEBUG_WHITE_LIST = ['development', 'test']
@@ -149,7 +164,9 @@ setup () {
 
 
 ### <span id="scss">scss全局样式</span>
+
 vue的思想就是组件化，在每个`.vue`页面的样式要想独立开来，可以添加scoped属性，使当前样式只能在当前vue文件中生效，使各个组件的样式互不污染。
+
 ```css
   <style lang="scss">
     /** global style */
@@ -160,6 +177,7 @@ vue的思想就是组件化，在每个`.vue`页面的样式要想独立开来�
 ```
 
 #### 目录结构
+
 vue3-h5-template所有全局样式都在`@/styles`目录下设置
 
 ```
@@ -174,6 +192,7 @@ vue3-h5-template所有全局样式都在`@/styles`目录下设置
 ```
 
 `vue.config.js`添加全局样式配置
+
 ```javascript
   css: {
     loaderOptions: {
@@ -189,7 +208,9 @@ vue3-h5-template所有全局样式都在`@/styles`目录下设置
 ```
 
 #### 全局mixins样式
+
 在`mixins.scss`中写好了常用的样式，如flex布局的上下左右居中，超出宽度省略等
+
 ```css
   @mixin flex-center {
     display: flex;
@@ -226,7 +247,9 @@ vue3-h5-template所有全局样式都在`@/styles`目录下设置
 
 
 ### <span id="bem">BEM命名规范</span>
+
 该项目使用BEM命名方法，由块（Block）元素（Element）修饰符（Modifier）组成，具有可读性且方便维护。
+
 ```css
   <!-- good -->
   <div class="header__btn--success" />
@@ -238,7 +261,9 @@ vue3-h5-template所有全局样式都在`@/styles`目录下设置
 
 
 ### <span id="deep">样式穿透</span>
+
 当你子组件使用了 `scoped` 但在父组件又想修改子组件的样式可以 通过 `:deep` 来实现
+
 ```css
   :deep .btn {
     background: lightskyblue;
@@ -246,4 +271,59 @@ vue3-h5-template所有全局样式都在`@/styles`目录下设置
 ```
 
 [🔙返回顶部](#catalogue)
+
+
+### <span id="phonex">适配苹果底部安全距离</span>
+
+在`index.html`的meta中添加`viewport-fit=cover`
+
+#### vant自带安全区适配
+
+[底部指示条的适配](https://vant-contrib.gitee.io/vant/#/zh-CN/advanced-usage#di-bu-an-quan-qu-gua-pei)
+
+Vant 中部分组件提供了 safe-area-inset-top 或 safe-area-inset-bottom 属性，设置该属性后，即可在对应的机型上开启适配
+
+```html
+  <!-- 在 head 标签中添加 meta 标签，并设置 viewport-fit=cover 值 -->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
+  />
+
+  <!-- 开启顶部安全区适配 -->
+  <van-nav-bar safe-area-inset-top />
+
+  <!-- 开启底部安全区适配 -->
+  <van-number-keyboard safe-area-inset-bottom />
+
+```
+
+#### 全局mixins样式
+
+在`mixins.scss`中有写好的样式，可直接用
+
+```css
+  @mixin bottom-safe-area {
+    padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+    padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+  }
+```
+
+[🔙返回顶部](#catalogue)
+
+
+### <span id="proxy">proxy 跨域配置</span>
+
+[🔙返回顶部](#catalogue)
+
+
+### <span id="mock">使用 mock 数据</span>
+
+[🔙返回顶部](#catalogue)
+
+
+### <span id="axios">axios 封装及接口拦截</span>
+
+[🔙返回顶部](#catalogue)
+
 
