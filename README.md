@@ -314,6 +314,19 @@ Vant 中部分组件提供了 safe-area-inset-top 或 safe-area-inset-bottom 属
 
 ### <span id="proxy">⚙️ proxy 跨域配置</span>
 
+在`vue.config.js`的proxy中配置相应参数
+
+```javascript
+  proxy: {
+    '/api': {
+      target: 'https://test.xxx.com', // 测试环境URL
+      // ws: true, // 是否启用websocket
+      changeOrigin: true, // 开启代理，在本地创建一个虚拟服务端
+      secure: false
+    }
+  },
+```
+
 [🔙返回顶部](#catalogue)
 
 
@@ -325,5 +338,13 @@ Vant 中部分组件提供了 safe-area-inset-top 或 safe-area-inset-bottom 属
 ### <span id="axios">⚙️ axios 封装及接口拦截</span>
 
 [🔙返回顶部](#catalogue)
+
+
+---
+
+#鸣谢
+
+[vue3-h5-template](https://github.com/ynzy/vue3-h5-template)
+[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
 
 
