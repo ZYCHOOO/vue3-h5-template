@@ -27,6 +27,14 @@ module.exports = {
     port: 8080,
     https: false,
     hotOnly: false,
+    proxy: {
+      '/api': {
+        target: 'https://test.xxx.com', // 测试环境URL
+        // ws: true, // 是否启用websockets
+        changeOrigin: true, // 开启代理，在本地创建一个虚拟服务端
+        secure: false
+      }
+    },
     before: () => {}
   },
   css: {
