@@ -17,8 +17,6 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '@/styles/mixins.scss';
-  @import '@/styles/variables.scss';
   .wrapper {
     @include wrapper;
   }

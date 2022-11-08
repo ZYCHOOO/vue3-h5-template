@@ -28,8 +28,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~@/styles/variables.scss';
-  @import '~@/styles/mixins.scss';
   .mine {
     padding: .1rem;
     height: calc(100vh - .5rem);

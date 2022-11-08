@@ -11,7 +11,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~@/styles/variables.scss';
   .custom {
     padding: .1rem;
     min-height: 100vh;

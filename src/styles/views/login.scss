@@ -1,17 +1,15 @@
-@import '~@/styles/variables.scss';
-@import '~@/styles/mixins.scss';
 .login__wrapper {
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  ::v-deep .van-cell-group--inset {
+  :deep .van-cell-group--inset {
     margin: 0 .55rem;
     border-radius: 0;
     border-bottom: .01rem solid rgba(174,188,212,0.3);
   }
-  ::v-deep .van-cell {
+  :deep .van-cell {
     padding: .14rem 0 .15rem;
     &__title {
       margin-right: .2rem;

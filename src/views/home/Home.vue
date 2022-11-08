@@ -30,7 +30,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~@/styles/variables.scss';
   .home {
     padding-bottom: .5rem;
     min-height: 100vh;
