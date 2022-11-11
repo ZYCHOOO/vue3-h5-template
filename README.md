@@ -342,7 +342,7 @@ Vant 中部分组件提供了 safe-area-inset-top 或 safe-area-inset-bottom 属
 
 ---
 
-#鸣谢
+# 鸣谢
 
 [vue3-h5-template](https://github.com/ynzy/vue3-h5-template)
 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)

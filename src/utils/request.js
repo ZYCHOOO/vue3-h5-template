@@ -7,7 +7,7 @@ import { getEnvValue } from '@/utils/environment'
 // create an axios instance
 const request = axios.create({
   baseURL: getEnvValue('VUE_APP_BASE_API'),
-  timeout: 1000
+  timeout: 10000
 })
 
 const requestArr = [request]
@@ -34,7 +34,10 @@ requestArr.forEach(service => {
 
   // response interceptor
   service.interceptors.response.use(
-    async response => {},
+    async response => {
+      const res = response.data
+      return res
+    },
     async error => {
       console.log('err' + error) // for debug
 
