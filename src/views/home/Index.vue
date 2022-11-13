@@ -5,9 +5,15 @@
 </template>
 
 <script>
+import { getUserInfo } from '@/api/test'
+
 export default {
   name: 'Index',
-  setup () {}
+  setup () {
+    getUserInfo({ token: 'admin-toke' }).then(res => {
+      console.log(res)
+    })
+  }
 }
 </script>
 

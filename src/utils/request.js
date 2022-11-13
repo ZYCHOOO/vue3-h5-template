@@ -1,6 +1,7 @@
 import axios from 'axios'
 import store from '@/store'
 import { Notify } from 'vant'
+import httpEnums from '@/utils/httpEnums'
 import { getToken } from '@/utils/storage'
 import { getEnvValue } from '@/utils/environment'
 
@@ -36,14 +37,36 @@ requestArr.forEach(service => {
   service.interceptors.response.use(
     async response => {
       const res = response.data
-      return res
+
+      // blob文件流
+      if (res instanceof Blob) {
+        return res
+      }
+
+      // 成功
+      if (res.code === httpEnums.CODES.Success) {
+        return res
+      }
+
+      // token失效
+      if (res.code === httpEnums.CODES.UnAuthorized) {
+        return Promise.reject(new Error('token过期！'))
+      }
+
+      const errMsg = res.message || res.msg
+
+      Notify({
+        message: errMsg || 'Error',
+        type: 'danger',
+        duration: 5 * 1000
+      })
+      return Promise.reject(new Error(errMsg || 'Error'))
     },
     async error => {
       console.log('err' + error) // for debug
 
       // 定时器提示报错的防抖
-      // eslint-disable-next-line no-unused-vars
-      const debounceErrMsgHandler = (errorMessage) => {
+      const errorDebounceHandler = (errorMessage) => {
         if (errMsgDebounceTimer) clearTimeout(errMsgDebounceTimer)
         const callNow = !errMsgDebounceTimer
         errMsgDebounceTimer = setTimeout(() => {
@@ -57,6 +80,19 @@ requestArr.forEach(service => {
             duration: errMsgDebounceWait
           })
         }
+      }
+
+      // const errorData = error.response.data
+      const errorStatus = error.response.status
+
+      if (errorStatus === httpEnums.HTTP_STATUS.REQUEST_ERROR.UnAuthorized) {
+        errorDebounceHandler(error.message)
+      } else if (errorStatus === httpEnums.HTTP_STATUS.SERVER_ERROR.InternalServerError) {
+        // 500特殊处理
+        return Promise.reject(error)
+      } else {
+        errorDebounceHandler(error.message)
+        return Promise.reject(error)
       }
     }
   )

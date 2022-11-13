@@ -48,7 +48,10 @@ export default {
     }
   },
   // http状态码
-  CODES: {},
+  CODES: {
+    Success: 200,
+    UnAuthorized: 401
+  },
   // http状态码白名单，在具体业务中处理
   ERRCODE_WHITE_LIST: []
 }
