@@ -82,12 +82,12 @@ requestArr.forEach(service => {
         }
       }
 
-      // const errorData = error.response.data
+      const errorData = error.response.data
       const errorStatus = error.response.status
 
       if (errorStatus === httpEnums.HTTP_STATUS.REQUEST_ERROR.UnAuthorized) {
         errorDebounceHandler(error.message)
-      } else if (errorStatus === httpEnums.HTTP_STATUS.SERVER_ERROR.InternalServerError) {
+      } else if (errorData.code === httpEnums.HTTP_STATUS.SERVER_ERROR.InternalServerError) {
         // 500特殊处理
         return Promise.reject(error)
       } else {
