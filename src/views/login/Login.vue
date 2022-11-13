@@ -35,6 +35,7 @@ import { Toast } from 'vant'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import { reactive, toRefs } from 'vue'
+import { login } from '@/api/modules/test'
 
 const loginEffect = () => {
   const store = useStore()
@@ -50,7 +51,9 @@ const loginEffect = () => {
   }
   const handleLogin = async () => {
     if (loginValidate()) {
-      await store.commit('userModule/setToken', 123)
+      const result = await login({ username: username.value, password: password.value })
+      const { token } = result
+      await store.commit('userModule/setToken', token)
       router.push({ name: 'Home' })
     }
   }

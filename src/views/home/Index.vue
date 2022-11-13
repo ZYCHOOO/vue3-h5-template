@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import { getUserInfo } from '@/api/test'
+import { getUserInfo } from '@/api/modules/test'
 
 export default {
   name: 'Index',
   setup () {
-    getUserInfo({ token: 'admin-toke' }).then(res => {
+    getUserInfo({ token: 'admin-token' }).then(res => {
       console.log(res)
     })
   }
