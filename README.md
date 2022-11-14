@@ -473,7 +473,7 @@ mock请求的封装采用的是[vue-element-admin 的 mock 请求封装](https:/
   ]
 ```
 
-在`main.js`中引入initMockServer
+在`main.js`中引入initMockServer，根据`.env.*`文件中的`VUE_APP_NEED_MOCK`参数来判断是否用mock数据
 
 ```javascript
   import { initMockServer } from '@/mock/mock-server'
