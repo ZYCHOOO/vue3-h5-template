@@ -3,6 +3,7 @@
 基于Vue3 + Vue-Cli4 + Vant-ui + sass + axios封装的移动端模版
 
 * 项目地址：[github](https://github.com/ZYCHOOO/vue3-h5-template)
+* 掘金地址：[掘金](https://juejin.cn/post/7165881115331919886)
 
 ### 项目结构
 
@@ -67,11 +68,13 @@ vue-h5-template
 * [全局 sass 样式](#sass)
 * [BEM 命名规范](#bem)
 * [样式穿透](#deep)
+* [iconfont图标管理](#iconfont)
 * [适配苹果底部安全距离](#phonex)
 * [proxy 跨域配置](#proxy)
 * [使用 mock 数据](#mock)
 * [axios 封装及接口拦截](#axios)
-
+* [vue-router](#router)
+* [gm-crypto 加解密](#gm)
 
 ### <span id="env">⚙️ 环境变量配置</span>
 
@@ -269,6 +272,11 @@ vue3-h5-template所有全局样式都在`@/styles`目录下设置
     background: lightskyblue;
   }
 ```
+
+[🔙返回顶部](#catalogue)
+
+
+### <span id="iconfont">⚙️ iconfont 图标管理</span>
 
 [🔙返回顶部](#catalogue)
 
