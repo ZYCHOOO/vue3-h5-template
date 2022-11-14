@@ -7,3 +7,6 @@ export const TABBAR_LIST = [
 
 // 调试白名单
 export const DEBUG_WHITE_LIST = ['development', 'teste']
+
+// 路由白名单
+export const ROUTE_WHITE_LIST = ['Login']

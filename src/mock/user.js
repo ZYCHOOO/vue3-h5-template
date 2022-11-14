@@ -50,7 +50,6 @@ export default [
     url: '/vue3-h5-template/user/info\.*',
     type: 'get',
     response: config => {
-      console.log(config, 'config')
       const token = getQueryString(config.query, 'token')
       const info = users[token]
 

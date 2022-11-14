@@ -52,9 +52,9 @@ const loginEffect = () => {
   const handleLogin = async () => {
     if (loginValidate()) {
       const result = await login({ username: username.value, password: password.value })
-      const { token } = result
+      const { token } = result.data
       await store.commit('userModule/setToken', token)
-      router.push({ name: 'Home' })
+      router.push({ name: 'Index' })
     }
   }
   return { username, password, handleLogin }

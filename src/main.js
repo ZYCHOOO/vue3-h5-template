@@ -11,9 +11,9 @@ import 'vant/lib/index.css'
 import 'normalize.css'
 import '@/styles/index.scss'
 
+import '@/router/permission'
+
 initDebugTool()
 initMockServer()
-
-// import '@/router/permission'
 
 createApp(App).use(store).use(router).use(Vant).mount('#app')
