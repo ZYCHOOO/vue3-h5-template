@@ -15,3 +15,10 @@ export const getUserInfo = (params) => {
     params
   })
 }
+
+export const logout = () => {
+  return request({
+    url: '/vue3-h5-template/user/logout',
+    method: 'POST'
+  })
+}

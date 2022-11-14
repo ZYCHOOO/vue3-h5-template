@@ -11,17 +11,23 @@
 </template>
 
 <script>
+import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import { removeToken } from '@/utils/storage'
+
+const logoutEffect = () => {
+  const router = useRouter()
+  const store = useStore()
+  const handleLogout = async () => {
+    await store.dispatch('userModule/logout')
+    router.push({ name: 'Login' })
+  }
+  return { handleLogout }
+}
 
 export default {
   name: 'Mine',
   setup () {
-    const router = useRouter()
-    const handleLogout = () => {
-      removeToken()
-      router.push({ name: 'Login' })
-    }
+    const { handleLogout } = logoutEffect()
     return { handleLogout }
   }
 }
