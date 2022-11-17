@@ -12,6 +12,13 @@ const ENV_CONFIGS = {
     test: { value: 'bbb', label: '示例-测试环境-appid' },
     stage: { value: 'ccc', label: '示例-预发布环境-appid' },
     production: { value: 'ddd', label: '示例-发布环境-appid' }
+  },
+  // CIPHER_KEY is also an example
+  CIPHER_KEY: {
+    development: { value: 'aaa', label: '示例-开发环境-cipherKey' },
+    test: { value: 'bbb', label: '示例-测试环境-cipherKey' },
+    stage: { value: 'ccc', label: '示例-预发布环境-cipherKey' },
+    production: { value: 'ddd', label: '示例-发布环境-cipherKey' }
   }
 }
 
