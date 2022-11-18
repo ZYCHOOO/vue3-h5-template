@@ -74,7 +74,6 @@ vue-h5-template
 * [使用 mock 数据](#mock)
 * [axios 封装及接口拦截](#axios)
 * [vue-router](#router)
-* [gm-crypto 加解密](#gm)
 
 ### <span id="env">⚙️ 环境变量配置</span>
 
@@ -702,6 +701,48 @@ export const getUserInfo = (params) => {
 
 [🔙返回顶部](#catalogue)
 
+
+### <span id="router">vue-router</span>
+
+在`router/modules`下管理各个路由。以``为例
+
+```
+```
+
+#### 路由守卫
+
+路由守卫分为全局守卫、单个路由守卫、组件内部守卫，在模版中用到了全局和单个路由守卫，用于登录鉴权
+
+- 全局守卫
+
+```javascript
+import store from '@/store'
+import router from '@/router'
+import { ROUTE_WHITE_LIST } from '@/utils/enums'
+
+router.beforeEach((to, from, next) => {
+  const { name } = to
+  const { token } = store.state.userModule
+  console.log('token::', token)
+  const isInWhiteList = ROUTE_WHITE_LIST.includes(name);
+  (token || isInWhiteList) ? next() : next({ name: 'Login' })
+})
+```
+
+- 单个路由守卫
+
+```javascript
+{
+  path: '/login',
+  name: 'Login',
+  component: () => import(/* webpackChunkName: "login" */ '@/views/login/Login'),
+  meta: { title: '登录' },
+  beforeEnter: (to, from, next) => {
+    const { token } = store.state.userModule
+    token ? next('/') : next()
+  }
+}
+```
 
 ---
 
