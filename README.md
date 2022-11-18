@@ -162,6 +162,22 @@ setup () {
 
 ### <span id="rem">⚙️ rem适配</span>
 
+> rem（font size of the root element）是css3新增的一个相对单位，是指相对于根元素的字体大小的单位
+
+```html
+<script>
+  function setRem () {
+    var width = document.documentElement.clientWidth || document.body.clientWidth
+    var ratio = width / 375
+    var fontSize = 100 * ratio
+    document.getElementsByTagName('html')[0].style['font-size'] = fontSize + 'px'
+  }
+  setRem()
+  window.addEventListener('resize', setRem)
+</script>
+```
+
+
 [🔙返回顶部](#catalogue)
 
 
