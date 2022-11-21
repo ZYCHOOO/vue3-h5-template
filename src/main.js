@@ -10,6 +10,7 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 import 'normalize.css'
 import '@/styles/index.scss'
+import 'amfe-flexible'
 
 import '@/router/permission'
 

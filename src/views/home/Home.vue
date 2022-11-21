@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss" scoped>
   .home {
-    padding-bottom: .5rem;
+    padding-bottom: 50px;
     min-height: 100vh;
     background: $default-bg-color;
     box-sizing: border-box;

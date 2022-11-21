@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss" scoped>
   .custom {
-    padding: .1rem;
+    padding: 10px;
     min-height: 100vh;
     overflow: auto;
     background: $main-bg-color;

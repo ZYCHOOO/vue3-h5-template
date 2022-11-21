@@ -36,20 +36,20 @@ export default {
 <style lang="scss" scoped>
   .mine {
     padding: .1rem;
-    height: calc(100vh - .5rem);
+    height: calc(100vh - 50px);
     overflow: hidden;
     background: $main-bg-color;
     &__logout__btn {
       @include flex-center;
       position: fixed;
-      bottom: 1.07rem;
+      bottom: 107px;
       left: 50%;
-      width: 1.67rem;
-      height: .38rem;
-      font-size: .16rem;
+      width: 167px;
+      height: 38px;
+      font-size: 16px;
       font-family: PingFangSC-Regular, PingFang SC;
       font-weight: 400;
-      border-radius: .04rem;
+      border-radius: 4px;
       border: .01rem solid rgba(151,151,151,0.5);
       color: rgba(155,158,167,0.7);
       transform: translateX(-50%);

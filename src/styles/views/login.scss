@@ -5,16 +5,16 @@
   top: 50%;
   transform: translateY(-50%);
   :deep .van-cell-group--inset {
-    margin: 0 .55rem;
+    margin: 0 55px;
     border-radius: 0;
     border-bottom: .01rem solid rgba(174,188,212,0.3);
   }
   :deep .van-cell {
-    padding: .14rem 0 .15rem;
+    padding: 14px 0 15px;
     &__title {
-      margin-right: .2rem;
-      width: .28rem;
-      font-size: .14rem;
+      margin-right: 20px;
+      width: 28px;
+      font-size: 14px;
       font-family: PingFangSC-Semibold, PingFang SC;
       font-weight: 600;
       color: $main-text-color;
@@ -22,13 +22,13 @@
     &::after {
       left: 0;
       right: 0;
-      border-bottom: .01rem solid rgba(174,188,212,0.3);
+      border-bottom: 1px solid rgba(174,188,212,0.3);
       transform: none;
     }
   }
   &__title {
-    margin: 0 auto .57rem;
-    font-size: .18rem;
+    margin: 0 auto 57px;
+    font-size: 18px;
     font-family: PingFangSC-Semibold, PingFang SC;
     font-weight: 600;
     text-align: center;
@@ -36,10 +36,10 @@
   }
   &__btn {
     @include flex-center;
-    margin: .3rem auto 0;
-    width: 2.66rem;
-    height: .38rem;
-    font-size: .16rem;
+    margin: 30px auto 0;
+    width: 266px;
+    height: 38px;
+    font-size: 16px;
     font-family: PingFangSC-Semibold, PingFang SC;
     font-weight: 600;
     background: linear-gradient(90deg, #4685FF 0%, #1D57FF 100%);
@@ -47,8 +47,8 @@
     color: $light-text-color;
   }
   &__forget {
-    margin: .3rem auto 0;
-    font-size: .14rem;
+    margin: 30px auto 0;
+    font-size: 14px;
     font-family: PingFangSC-Regular, PingFang SC;
     font-weight: 400;
     text-align: center;
