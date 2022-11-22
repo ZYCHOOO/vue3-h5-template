@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 
@@ -33,13 +33,7 @@ const mineEffect = () => {
   return { handleLogout, handleUserInfo }
 }
 
-export default {
-  name: 'Mine',
-  setup () {
-    const { handleLogout, handleUserInfo } = mineEffect()
-    return { handleLogout, handleUserInfo }
-  }
-}
+const { handleLogout, handleUserInfo } = mineEffect()
 </script>
 
 <style lang="scss" scoped>

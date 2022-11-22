@@ -15,18 +15,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 import { TABBAR_LIST } from '@/utils/enums'
 
-export default {
-  name: 'Home',
-  setup () {
-    const activeName = ref('home')
-    const tabbarList = TABBAR_LIST
-    return { activeName, tabbarList }
-  }
-}
+const activeName = ref('home')
+const tabbarList = TABBAR_LIST
 </script>
 
 <style lang="scss" scoped>

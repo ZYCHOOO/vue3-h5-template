@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { Toast } from 'vant'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
@@ -65,19 +65,9 @@ const forgetEffect = () => {
   }
   return { handleForget }
 }
-export default {
-  name: 'Login',
-  setup () {
-    const { username, password, handleLogin } = loginEffect()
-    const { handleForget } = forgetEffect()
-    return {
-      username,
-      password,
-      handleLogin,
-      handleForget
-    }
-  }
-}
+
+const { username, password, handleLogin } = loginEffect()
+const { handleForget } = forgetEffect()
 </script>
 
 <style lang="scss" scoped>
