@@ -4,17 +4,16 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { useStore } from 'vuex'
 import { getUserInfo } from '@/api/modules/test'
 
-export default {
-  name: 'Index',
-  setup () {
-    getUserInfo({ token: 'admin-token' }).then(res => {
-      console.log(res)
-    })
-  }
-}
+const store = useStore()
+
+getUserInfo({ token: 'admin-token' }).then(res => {
+  const userInfo = res.data
+  store.commit('userModule/setUserInfo', userInfo)
+})
 </script>
 
 <style lang="scss" scoped>

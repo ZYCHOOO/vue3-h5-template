@@ -3,7 +3,8 @@ import { logout } from '@/api/modules/test'
 
 const getDefaultState = () => {
   return {
-    token: getStorage('token')
+    token: getStorage('token'),
+    userInfo: JSON.parse(getStorage('userInfo'))
   }
 }
 
@@ -17,6 +18,10 @@ export default {
     setToken (state, token) {
       state.token = token
       setStorage('token', token)
+    },
+    setUserInfo (state, userInfo) {
+      state.userInfo = userInfo
+      setStorage('userInfo', userInfo)
     }
   },
   actions: {
