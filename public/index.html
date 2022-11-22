@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maxium-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <script>
+    <!-- <script>
       function setRem () {
-        const baseSize = 37.5
         var width = document.documentElement.clientWidth || document.body.clientWidth
         var ratio = width / 375
-        var fontSize = baseSize * ratio
+        var fontSize = 100 * ratio
         document.getElementsByTagName('html')[0].style['font-size'] = fontSize + 'px'
       }
       setRem()
       window.addEventListener('resize', setRem)
-    </script>
+    </script> -->
   </head>
   <body>
     <noscript>
