@@ -1,9 +1,9 @@
-import { setToken, getToken, removeToken } from '@/utils/storage'
+import { setStorage, getStorage, removeStorage } from '@/utils/storage'
 import { logout } from '@/api/modules/test'
 
 const getDefaultState = () => {
   return {
-    token: getToken()
+    token: getStorage('token')
   }
 }
 
@@ -16,14 +16,14 @@ export default {
     },
     setToken (state, token) {
       state.token = token
-      setToken(token)
+      setStorage('token', token)
     }
   },
   actions: {
     logout ({ commit }) {
       return new Promise((resolve, reject) => {
         logout().then(() => {
-          removeToken()
+          removeStorage('token')
           commit('resetState')
           resolve()
         }).catch(error => {

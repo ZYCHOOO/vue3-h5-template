@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '@/store'
 import { Notify } from 'vant'
 import httpEnums from '@/utils/httpEnums'
-import { getToken } from '@/utils/storage'
+import { getStorage } from '@/utils/storage'
 import { getEnvValue } from '@/utils/environment'
 
 // create an axios instance
@@ -22,7 +22,7 @@ requestArr.forEach(service => {
   service.interceptors.request.use(
     async config => {
       if (store.getters.token) {
-        config.headers.Authorization = `Bearer ${getToken()}`
+        config.headers.Authorization = `Bearer ${getStorage('token')}`
       }
       return config
     },
