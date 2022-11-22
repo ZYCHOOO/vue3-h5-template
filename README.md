@@ -797,7 +797,7 @@ router.beforeEach((to, from, next) => {
 [🔙返回顶部](#catalogue)
 
 
-### <span id="storage">本地存储 storage 封装</span>
+### <span id="storage">⚙️ 本地存储 storage 封装</span>
 
 已做好 storage 封装，可直接使用
 
