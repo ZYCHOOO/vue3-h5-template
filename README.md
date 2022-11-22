@@ -73,6 +73,7 @@ vue-h5-template
 * [使用 mock 数据](#mock)
 * [axios 封装及接口拦截](#axios)
 * [vue-router](#router)
+* [本地存储 storage 封装](#storage)
 
 ### <span id="env">⚙️ 环境变量配置</span>
 
@@ -163,6 +164,8 @@ setup () {
 
 > rem（font size of the root element）是css3新增的一个相对单位，是指相对于根元素的字体大小的单位
 
+- 手动rem适配
+
 ```html
 <script>
   function setRem () {
@@ -174,6 +177,39 @@ setup () {
   setRem()
   window.addEventListener('resize', setRem)
 </script>
+```
+
+- 使用postcss插件rem适配
+
+[postcss-pxtorem](https://github.com/cuth/postcss-pxtorem) 是一款 postcss 插件，用于将 px 单位转化为 rem 单位
+[amfe-flexible](https://github.com/amfe/lib-flexible) 用于设置 rem 基准值
+
+```bash
+  npm i amfe-flexible -S
+  npm i postcss-pxtorem -D
+```
+
+在项目根目录中，新建`postcss.config.js`
+
+```javascript
+  module.exports = {
+    plugins: {
+      autoprefixer: {
+        browsers: 'last 5 version',
+        overrideBrowserslist: ['Android 4.1', 'iOS 7.1', 'Chrome > 31', 'ff > 31', 'ie >= 8']
+      },
+      'postcss-pxtorem': {
+        rootValue: 37.5,
+        propList: ['*']
+      }
+    }
+  }
+```
+
+在`main.js`中引入`amfe-flexible`
+
+```javascript
+  import 'amfe-flexible/index.js'
 ```
 
 
@@ -579,7 +615,7 @@ mock请求的封装采用的是[vue-element-admin 的 mock 请求封装](https:/
   import store from '@/store'
   import { Notify } from 'vant'
   import httpEnums from '@/utils/httpEnums'
-  import { getToken } from '@/utils/storage'
+  import { getStorage } from '@/utils/storage'
   import { getEnvValue } from '@/utils/environment'
 
   // create an axios instance
@@ -599,7 +635,7 @@ mock请求的封装采用的是[vue-element-admin 的 mock 请求封装](https:/
     service.interceptors.request.use(
       async config => {
         if (store.getters.token) {
-          config.headers.Authorization = `Bearer ${getToken()}`
+          config.headers.Authorization = `Bearer ${getStorage('token')}`
         }
         return config
       },
@@ -757,6 +793,27 @@ router.beforeEach((to, from, next) => {
   }
 }
 ```
+
+[🔙返回顶部](#catalogue)
+
+
+### <span id="storage">本地存储 storage 封装</span>
+
+已做好 storage 封装，可直接使用
+
+```javascript
+  import { getStorage, setStorage, removeStorage } from '@/utils/storage'
+
+  setup () {
+    const token = getStorage('token')
+    const userInfo = { name: 'zychooo' }
+    setStorage('user', userInfo)
+    removeStorage('token')
+  }
+```
+
+[🔙返回顶部](#catalogue)
+
 
 ---
 
