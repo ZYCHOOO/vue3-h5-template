@@ -62,6 +62,10 @@ vue-h5-template
   npm run serve
 ```
 
+### 版本更新记录
+
+[更新记录](https://github.com/ZYCHOOO/vue3-h5-template/blob/master/version.md)
+
 ## <span id="catalogue">目录</span>
 
 * [环境变量配置](#env)
