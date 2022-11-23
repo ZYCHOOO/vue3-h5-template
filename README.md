@@ -29,8 +29,12 @@ vue-h5-template
 │     ├─ mixins.css	--------- 全局mixins样式
 │     └─ variables.css ------ css变量
 │  ├─ utils --------------- 工具类
+│     ├─ debug.js	----------- 调试方法
 │     ├─ enums.js	----------- 枚举值
 │     ├─ environment.js	----- 环境变量及方法
+│     ├─ httpEnums.js	------- http状态码枚举
+│     ├─ index.js	----------- 常用方法
+│     ├─ regExp.js	--------- 正则表达式
 │     ├─ request.js	--------- axios 封装
 │     └─ storage.js	--------- 本地存储封装
 │  ├─ views	--------------- 页面
@@ -754,9 +758,17 @@ export const getUserInfo = (params) => {
 
 ### <span id="router">vue-router</span>
 
-在`router/modules`下管理各个路由。以``为例
+在`router/modules`下管理各个路由。以`demo.js`为例
 
-```
+```javascript
+const routes = [{
+  path: '/userInfo',
+  name: 'UserInfo',
+  component: () => import(/* webpackChunkName: 'user-info' */'@/views/demo'),
+  meta: { title: '用户信息', showNavbar: true }
+}]
+
+export default routes
 ```
 
 #### 路由守卫
