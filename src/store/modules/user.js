@@ -1,4 +1,5 @@
-import { setStorage, getStorage, removeStorage } from '@/utils/storage'
+// eslint-disable-next-line no-unused-vars
+import { setStorage, getStorage, removeStorage, removeAllStorage } from '@/utils/storage'
 import { logout } from '@/api/modules/test'
 
 const getDefaultState = () => {
@@ -28,7 +29,7 @@ export default {
     logout ({ commit }) {
       return new Promise((resolve, reject) => {
         logout().then(() => {
-          removeStorage('token')
+          removeAllStorage()
           commit('resetState')
           resolve()
         }).catch(error => {
