@@ -17,7 +17,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { TABBAR_LIST } from '@/utils/enums'
+import { TABBAR_LIST } from '@/constant/enums'
 
 const activeName = ref('home')
 const tabbarList = TABBAR_LIST

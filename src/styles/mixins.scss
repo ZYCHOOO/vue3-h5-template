@@ -41,7 +41,7 @@
 // 多行省略
 @mixin multiline-ellipsis($lineNum) {
   display: -webkit-box;
-  overflow : hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: $lineNum;
   -webkit-box-orient: vertical;
@@ -61,4 +61,13 @@
   bottom: 0;
   background: $default-bg-color;
   overflow-y: auto;
+}
+
+@mixin mourning-mode {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  -webkit-filter: grayscale(1);
 }

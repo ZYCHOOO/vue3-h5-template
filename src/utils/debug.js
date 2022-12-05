@@ -1,6 +1,6 @@
 import eruda from 'eruda'
 import { getEnvValue } from './environment'
-import { DEBUG_WHITE_LIST } from './enums'
+import { DEBUG_WHITE_LIST } from '../constant/enums'
 
 export function initDebugTool () {
   const currentEnv = getEnvValue('VUE_APP_ENV')

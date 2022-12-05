@@ -10,12 +10,12 @@ export function param2Obj (url) {
   }
   return JSON.parse(
     '{"' +
-    decodeURIComponent(search)
-      .replace(/"/g, '\\"')
-      .replace(/&/g, '","')
-      .replace(/=/g, '":"')
-      .replace(/\+/g, ' ') +
-    '"}'
+      decodeURIComponent(search)
+        .replace(/"/g, '\\"')
+        .replace(/&/g, '","')
+        .replace(/=/g, '":"')
+        .replace(/\+/g, ' ') +
+      '"}'
   )
 }
 
@@ -29,4 +29,11 @@ export function getQueryString (url, queryKey) {
   const reg = new RegExp(`&{1}${queryKey}\\=[a-zA-Z0-9_-]+`, 'g')
   const matchResult = url.replace(/\?/g, '&').match(reg)[0]
   return matchResult.substr(matchResult.indexOf('=') + 1)
+}
+
+/**
+ * 是否为哀悼模式
+ */
+export function isMournMode (mournKey) {
+  return getQueryString(window.location.href, mournKey)
 }

@@ -1,6 +1,6 @@
 import store from '@/store'
 import router from '@/router'
-import { ROUTE_WHITE_LIST } from '@/utils/enums'
+import { ROUTE_WHITE_LIST } from '@/constant/enums'
 
 router.beforeEach((to, from, next) => {
   const { name } = to

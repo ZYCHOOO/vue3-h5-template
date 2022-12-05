@@ -1,16 +1,16 @@
 <template>
   <div class="wrapper">
-    <div class="user__info">
-      <div class="user__info__title">头像</div>
-      <img :src="userInfo.avatar" alt="" class="user__info__avatar">
+    <div class="user-info">
+      <div class="user-info-title">头像</div>
+      <img :src="userInfo.avatar" alt="" class="user-info-avatar">
     </div>
-    <div class="user__info">
-      <div class="user__info__title">姓名</div>
-      <div class="user__info__content">{{ userInfo.name }}</div>
+    <div class="user-info">
+      <div class="user-info-title">姓名</div>
+      <div class="user-info-content">{{ userInfo.name }}</div>
     </div>
-    <div class="user__info">
-      <div class="user__info__title">性别</div>
-      <div class="user__info__content">{{ userInfo.sex === 1 ? '男' : '女' }}</div>
+    <div class="user-info">
+      <div class="user-info-title">性别</div>
+      <div class="user-info-content">{{ userInfo.sex === 1 ? '男' : '女' }}</div>
     </div>
   </div>
 </template>
@@ -32,29 +32,29 @@ const { userInfo } = userInfoEffect()
   .wrapper {
     @include wrapper;
     padding-top: 56px;
-    .user__info {
+    .user-info {
       @include flex-align-center;
       margin: 0 14px;
       height: 57px;
       border-bottom: 1px solid $default-border-color;
-      &__avatar {
+      &-avatar {
         margin-left: auto;
         width: 42px;
         height: 42px;
         border-radius: 4px;
         object-fit: cover;
       }
-      &__title {
+      &-title {
         font-size: 15px;
         color: $main-text-color;
       }
-      &__content {
+      &-content {
         margin-left: auto;
         font-size: 15px;
         color: $secondary-text-color;
       }
     }
-    .user__info:nth-child(1) {
+    .user-info:nth-child(1) {
       border-top: 1px solid $default-border-color;
     }
   }

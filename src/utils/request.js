@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '@/store'
 import { Notify } from 'vant'
-import httpEnums from '@/utils/httpEnums'
+import httpEnums from '@/constant/httpEnums'
 import { getStorage } from '@/utils/storage'
 import { getEnvValue } from '@/utils/environment'
 
@@ -17,16 +17,16 @@ const requestArr = [request]
 let errMsgDebounceTimer = null
 const errMsgDebounceWait = 5000
 
-requestArr.forEach(service => {
+requestArr.forEach((service) => {
   // request interceptor
   service.interceptors.request.use(
-    async config => {
+    async (config) => {
       if (store.getters.token) {
         config.headers.Authorization = `Bearer ${getStorage('token')}`
       }
       return config
     },
-    error => {
+    (error) => {
       // do something with request error
       console.log(error) // for debug
       return Promise.reject(error)
@@ -35,7 +35,7 @@ requestArr.forEach(service => {
 
   // response interceptor
   service.interceptors.response.use(
-    async response => {
+    async (response) => {
       const res = response.data
 
       // blob文件流
@@ -62,7 +62,7 @@ requestArr.forEach(service => {
       })
       return Promise.reject(new Error(errMsg || 'Error'))
     },
-    async error => {
+    async (error) => {
       console.log('err' + error) // for debug
 
       // 定时器提示报错的防抖
@@ -87,7 +87,10 @@ requestArr.forEach(service => {
 
       if (errorStatus === httpEnums.HTTP_STATUS.REQUEST_ERROR.UnAuthorized) {
         errorDebounceHandler(error.message)
-      } else if (errorData.code === httpEnums.HTTP_STATUS.SERVER_ERROR.InternalServerError) {
+      } else if (
+        errorData.code ===
+        httpEnums.HTTP_STATUS.SERVER_ERROR.InternalServerError
+      ) {
         // 500特殊处理
         return Promise.reject(error)
       } else {

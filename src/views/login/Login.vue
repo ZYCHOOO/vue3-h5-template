@@ -1,6 +1,6 @@
 <template>
-  <div class="login__wrapper">
-    <div class="login__wrapper__title">vue-h5-代码模版</div>
+  <div class="login-wrapper">
+    <div class="login-wrapper-title">vue-h5-代码模版</div>
     <van-cell-group inset>
       <van-field
         v-model="username"
@@ -15,13 +15,13 @@
       />
     </van-cell-group>
     <div
-      class="login__wrapper__btn"
+      class="login-wrapper-btn"
       @click="handleLogin"
     >
       登 录
     </div>
     <div
-      class="login__wrapper__forget"
+      class="login-wrapper-forget"
       @click="handleForget"
     >
       忘记密码？
