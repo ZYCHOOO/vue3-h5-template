@@ -83,6 +83,7 @@ vue-h5-template
 - [vue-router](#router)
 - [本地存储 storage 封装](#storage)
 - [哀悼模式](#mourn)
+- [dayjs 处理时间](#dayjs)
 
 ### <span id="env">⚙️ 环境变量配置</span>
 
@@ -841,6 +842,7 @@ router.beforeEach((to, from, next) => {
 ### <span id="mourn">🕯️ 哀悼模式</span>
 
 通过 filter.grayscale() 实现页面哀悼模式
+
 2022/11/30 祝长者一路走好 👓🕯️
 
 ```css
@@ -858,6 +860,31 @@ router.beforeEach((to, from, next) => {
 
 1. 在路由拼接 mourn=true， 项目全页面会进入哀悼模式
 2. 通过 `utils/index` 中 `isMournMode` 和 `mixins.scss` 中的样式，对特定页面开启哀悼模式，如首页 `home/index.vue`
+
+[🔙 返回顶部](#catalogue)
+
+### <span id="dayjs">⚙️ dayjs 处理时间</span>
+
+本项目引入 dayjs 并已在全局挂载，可直接使用
+
+```javascript
+<template>
+  <div class="wrapper">
+    {{ proxy.$dayjs(new Date()).format('YY-MM-DD HH:mm:ss') }}
+  </div>
+</template>
+
+<script setup>
+import { computed, getCurrentInstance } from 'vue'
+
+const { proxy } = getCurrentInstance()
+
+const currentTime = computed(() => {
+  return proxy.$dayjs(new Date()).format('YY-MM-DD HH:mm:ss')
+})
+
+</script>
+```
 
 ---
 
