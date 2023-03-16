@@ -2,10 +2,11 @@
 @import './iconfont.css';
 
 html[theme='mourn'] {
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  -webkit-filter: grayscale(1);
+  #app::before {
+    content: '';
+    position: absolute;
+    backdrop-filter: grayscale(100%);
+    width: 100%;
+    height: calc(100vh - 50px);
+  }
 }
