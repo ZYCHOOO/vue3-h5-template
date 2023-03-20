@@ -84,6 +84,7 @@ vue-h5-template
 - [本地存储 storage 封装](#storage)
 - [哀悼模式](#mourn)
 - [dayjs 处理时间](#dayjs)
+- [虚拟列表组建](#virtuallist)
 
 ### <span id="env">⚙️ 环境变量配置</span>
 
@@ -861,6 +862,22 @@ router.beforeEach((to, from, next) => {
 1. 在路由拼接 mourn=true， 项目全页面会进入哀悼模式
 2. 通过 `utils/index` 中 `isMournMode` 和 `mixins.scss` 中的样式，对特定页面开启哀悼模式，如首页 `home/index.vue`
 
+#### 首屏哀悼
+
+代码模版在 v1.0.5 版本更新了首屏哀悼模式，在路由拼接 mourn=true 即可；通过 backdrop-filter 来实现该功能
+
+```
+html[theme='mourn'] {
+  #app::before {
+    content: '';
+    position: absolute;
+    backdrop-filter: grayscale(100%);
+    width: 100%;
+    height: calc(100vh - 50px);
+  }
+}
+```
+
 [🔙 返回顶部](#catalogue)
 
 ### <span id="dayjs">⚙️ dayjs 处理时间</span>
@@ -885,6 +902,24 @@ const currentTime = computed(() => {
 
 </script>
 ```
+
+[🔙 返回顶部](#catalogue)
+
+### <span id="virtuallist">⚙️ 虚拟列表组件</span>
+
+为了防止数据量过大，DOM 渲染过多导致卡顿，该模版在 v1.0.5 版本提供了虚拟列表组件。  
+参数如下：
+
+| 参数       | 说明                 | 类型   | 可选值 | 默认值 |
+| ---------- | -------------------- | ------ | ------ | ------ |
+| itemKey    | key 值               | String | -      | id     |
+| listData   | 列表数据             | Array  | -      | -      |
+| itemHeight | 单个子项的高度       | Number | -      | 0      |
+| showNum    | 需要给用户展示的数量 | Number | -      | 0      |
+| startIndex | 起始下标             | Number | -      | 0      |
+| endIndex   | 结束下标             | Number | -      | 0      |
+
+[🔙 返回顶部](#catalogue)
 
 ---
 
